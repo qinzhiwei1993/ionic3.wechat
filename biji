@@ -1,0 +1,5 @@
+## ionic3使用微信sdk过程详解
+   a:首先引入sdk的js文件，ionic3是使用typescript,是一个单页面引用程序，所以在index.html中引入该文件即可全局使用
+   b:生命wx的全局变量。  在declartion.d.ts中添加一行
+          declare var wx: any;我见过有的人使用在单独使用一个文件.d.ts进行生命wx类型，这样的话在页面中使用的时候还需要引用这个.d.ts文件，当在declartion.d.ts
+          文件中声明时，wx即为全局变量，无需在单独引用
