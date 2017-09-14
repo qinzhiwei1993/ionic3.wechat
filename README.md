@@ -36,7 +36,7 @@ ionic3  微信端网页开发
         })
         
 # ios andorid 微信窗口内播放
-      <video playsinline webkit-playsinline x5-playsinline></video>  
+      ##<video playsinline webkit-playsinline x5-playsinline></video>  
         
         ios: ios系统微信使用的内核是chrome浏览器的内核，需要兼容之前的版本，所以使用属性 playsinline 和  webkit-playsinline即可窗口内播放，且视频是同层播放，video的上层可以浮动内容
         
