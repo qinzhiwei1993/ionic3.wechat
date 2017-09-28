@@ -34,7 +34,19 @@ ionic3  微信端网页开发
             console.log(res.networkType) //返回网络类型2g，3g，4g，wifi
             document.getElementById("video").play();
         })
-
+        
+# ios andorid 微信窗口内播放
+  
+    
+    <video playsinline webkit-playsinline x5-playsinline></video>  
+        
+        ios: ios系统微信使用的内核是chrome浏览器的内核，需要兼容之前的版本，所以使用属性 playsinline 和  webkit-playsinline即可窗口内播放，且视频是同层播放，video的上层可以浮动内容
+        
+        android: android系统微信内使用的内核是腾讯自己的x5内核， x5-playsinline属性可以使video小窗口内播放，但是video被置为最顶层，上面不能浮动任何东西。这个问题目前还没有出来解决方案，看腾讯自己以后怎么做了。还有一种方式就是x5-video-player-type="h5"， 将video同层播放，但是会全屏。 
+          
+        
+        白名单：这个是腾讯的一个版名单，将网页的域名放到wximg.gtimg.co下面，video将不被接管，使用原生的video进行播放，当然也可以小窗口，自动播放应该也不是问题
+      
 # 模拟微信点击评论弹出输入框
     页面： css position：fixed; 将输入框固定到底部，并先隐藏
     js：   通过input的focus方法，让输入框获取焦点，弹出键盘
@@ -50,5 +62,4 @@ ionic3  微信端网页开发
             document.body.scrollTop = document.body.scrollHeight;
         }, 200)
         一句话就可以解决。因为键盘弹起来有时间，所以这个最好也设置个定时器
-
 
