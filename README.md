@@ -34,3 +34,21 @@ ionic3  微信端网页开发
             console.log(res.networkType) //返回网络类型2g，3g，4g，wifi
             document.getElementById("video").play();
         })
+
+# 模拟微信点击评论弹出输入框
+    页面： css position：fixed; 将输入框固定到底部，并先隐藏
+    js：   通过input的focus方法，让输入框获取焦点，弹出键盘
+        android： 设置定时器延迟在让输入框focus，否则无效
+                setTimeout(() => {
+                    input.focus();
+                }, 200)
+        iso：     必须立马执行focus事件，否则无效，两者需要兼容
+                input.focus();
+
+    ## 键盘遮挡输入框问题：
+        setTimeout(() => {
+            document.body.scrollTop = document.body.scrollHeight;
+        }, 200)
+        一句话就可以解决。因为键盘弹起来有时间，所以这个最好也设置个定时器
+
+
