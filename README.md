@@ -50,7 +50,10 @@ ionic3  微信端网页开发
 # 模拟微信点击评论弹出输入框
     页面： css position：fixed; 将输入框固定到底部，并先隐藏
     js：   通过input的focus方法，让输入框获取焦点，弹出键盘
-        android： 设置定时器延迟在让输入框focus，否则无效
+        this.inputDom.nativeElement.scrollIntoView({block: "end", behavior: "smooth"}); //移动到窗口的可视范围内
+        //this.inputDom.nativeElement.scrollIntoView(false);  效果一样
+        
+        android： 设置定时器延迟在让输入框focus，否则无效
                 setTimeout(() => {
                     input.focus();
                 }, 200)
@@ -62,4 +65,30 @@ ionic3  微信端网页开发
             document.body.scrollTop = document.body.scrollHeight;
         }, 200)
         一句话就可以解决。因为键盘弹起来有时间，所以这个最好也设置个定时器
+        
+    ##兼容ios11以上系统
+      当是ios11以上的时候，不在执行this.inputDom.nativeElement.scrollIntoView(false);
+      不在执行document.body.scrollTop = document.body.scrollHeight;这两个事件即可。  由于ios渲染效果改变了，document.body.scrollTop始终为0
+      判断当前iphone的版本号
+      
+      let userAgent = navigator.userAgent.toLowerCase();
+      let userAgent = navigator.userAgent.toLowerCase();
+      let ver = userAgent.match(/cpu iphone os (.*?) like mac os/);
+      if(!ver){//不是iphone
+         return false;
+      }
+      let num = ver[1].split('_')[0];
+      if(Number(num) >= 11){
+         return true;
+      }
+      return false;
+         
+    
+    
+    
+    
+    
+    
+    
+    
 
