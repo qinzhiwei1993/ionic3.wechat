@@ -74,23 +74,26 @@ ionic3  微信端网页开发
     
       当是ios11以上的时候，不在执行
       
-      this.inputDom.nativeElement.scrollIntoView(false);
-      document.body.scrollTop = document.body.scrollHeight;
+         this.inputDom.nativeElement.scrollIntoView(false);
+         document.body.scrollTop = document.body.scrollHeight;
+      
       
       这两个事件即可。  由于ios渲染效果改变了，document.body.scrollTop始终为0
-      判断当前iphone的版本号
       
-      let userAgent = navigator.userAgent.toLowerCase();
-      let userAgent = navigator.userAgent.toLowerCase();
-      let ver = userAgent.match(/cpu iphone os (.*?) like mac os/);
-      if(!ver){//不是iphone
+      
+      ##判断当前iphone的版本号
+      
+         let userAgent = navigator.userAgent.toLowerCase();
+         let userAgent = navigator.userAgent.toLowerCase();
+         let ver = userAgent.match(/cpu iphone os (.*?) like mac os/);
+         if(!ver){//不是iphone
+            return false;
+         }
+         let num = ver[1].split('_')[0];
+         if(Number(num) >= 11){
+            return true;
+         }
          return false;
-      }
-      let num = ver[1].split('_')[0];
-      if(Number(num) >= 11){
-         return true;
-      }
-      return false;
          
     
     
